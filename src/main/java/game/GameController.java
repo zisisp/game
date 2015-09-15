@@ -20,11 +20,13 @@ public class GameController {
     @ResponseBody
     GameState play(
             @RequestParam(value = "gamestate", required = false) GameState gameState,
-            @RequestParam(value = "move", required = false) String move) {
+            @RequestParam(value = "move", required = false) String move) throws GameException {
+        int moveToMake=0;
         try {
-            int moveToMake=Integer.parseInt(move);
+            moveToMake=Integer.parseInt(move);
         } catch (NumberFormatException e) {
+            throw new GameException("Wrong input for player move");
         }
-        return game.makeTheMove(gameState, move);
+        return game.makeTheMove(gameState, moveToMake);
     }
 }

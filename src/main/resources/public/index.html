@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://code.createjs.com/easeljs-0.8.1.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Test easeljs</title>
+
+</head>
+<script>
+    function init(){
+        var stage = new createjs.Stage("demoCanvas");
+        var circleBig1=new createjs.Shape();
+        circleBig1.graphics.beginFill("RoyalBlue").drawEllipse(0,75,100,150);
+//        circle.x=0;
+//        circle.y=100;
+        stage.addChild(circleBig1)
+
+        var circleBig2=new createjs.Shape();
+        circleBig2.graphics.beginFill("OrangeRed").drawEllipse(700,75,100,150);
+//        circle.x=0;
+//        circle.y=100;
+        stage.addChild(circleBig2)
+        for (var i=1;i<7;i++) {
+            var circle1=new createjs.Shape();
+            circle1.graphics.beginFill("DeepSkyBlue").drawCircle(0,0,30);
+            circle1.x=100*i+50;
+            circle1.y=100;
+            stage.addChild(circle1);
+        }
+
+        for (var i=1;i<7;i++) {
+            var circle2=new createjs.Shape();
+            circle2.graphics.beginFill("Tomato").drawCircle(0,0,30);
+            circle2.x=100*i+50;
+            circle2.y=200;
+            stage.addChild(circle2);
+        }
+
+        stage.update();
+    }
+</script>
+<body onload="init();">
+<canvas id="demoCanvas" width="1500" height="500"></canvas>
+</body>
+</html>
