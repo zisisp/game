@@ -53,8 +53,8 @@ public class ApplicationTests {
                         .content(request)
         )
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(contentType));
-//                .andExpect(jsonPath("$.number", is(number)))
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.playersTurn", is(0)));
 //                .andExpect(jsonPath("$.result", is(result)));
         System.out.println("Test is ok");
     }
