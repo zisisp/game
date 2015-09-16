@@ -21,7 +21,7 @@ public class GameController {
     GameState play(
             @RequestParam(value = "gamestate", required = false) GameState gameState,
             @RequestParam(value = "move", required = false) String move) throws GameException {
-        int moveToMake=0;
+        int moveToMake;
         try {
             moveToMake=Integer.parseInt(move);
         } catch (NumberFormatException e) {

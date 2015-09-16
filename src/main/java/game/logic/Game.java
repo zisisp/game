@@ -31,7 +31,7 @@ public class Game {
         moving.balls.set(originatingPit, 0);//empty this pit
         int indexToUse = 0;
         boolean changePlayer = true;
-        for (int i = originatingPit + 1; i < ballsToMove; i++) {
+        for (int i = originatingPit + 1; i <(originatingPit + 1)+ ballsToMove; i++) {
             indexToUse = i % 7;
             moving.balls.set(indexToUse, moving.balls.get(indexToUse) + 1);
             if (indexToUse == 6) {
@@ -45,8 +45,9 @@ public class Game {
             captured = captureOpponentsBalls(gameState, indexToUse);
         }
         if (captured) {
-            if (checkIfGameEnded(gameState)) {
+            if (gameEnded(gameState)) {
                 gameState.gameEnded=true;
+                gameState.winner=gameState.playersTurn;
                 return gameState;
             }
         }
@@ -57,7 +58,7 @@ public class Game {
         return gameState;
     }
 
-    private boolean checkIfGameEnded(GameState gameState) {
+    private boolean gameEnded(GameState gameState) {
         Player opponent=gameState.players.get(Math.abs(gameState.playersTurn-1));
         for (int i = 0; i < 6; i++) {
             if (opponent.balls.get(i) != 0) {

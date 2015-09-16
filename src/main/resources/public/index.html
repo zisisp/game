@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app lang="en">
 <script src="https://code.createjs.com/easeljs-0.8.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script src="hello.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <title>Test easeljs</title>
@@ -40,6 +43,10 @@
     }
 </script>
 <body onload="init();">
+<div ng-controller="Hello">
+    <p>The ID is {{greeting.id}}</p>
+    <p>The content is {{greeting.content}}</p>
+</div>
 <canvas id="demoCanvas" width="1500" height="500"></canvas>
 </body>
 </html>
