@@ -36,4 +36,44 @@ public class GameState {
     public void changeActivePlayer() {
         playersTurn=(playersTurn==1)?0:1;
     }
+
+    public int getPlayersTurn() {
+        return playersTurn;
+    }
+
+    public void setPlayersTurn(int playersTurn) {
+        this.playersTurn = playersTurn;
+    }
+
+    public String getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(String gameId) {
+        this.gameId = gameId;
+    }
+
+    public boolean isGameEnded() {
+        return gameEnded;
+    }
+
+    public void setGameEnded(boolean gameEnded) {
+        this.gameEnded = gameEnded;
+    }
+
+    public int getWinner() {
+        return winner;
+    }
+
+    public void setWinner(int winner) {
+        this.winner = winner;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
 }
