@@ -22,5 +22,27 @@ public class Player {
         balls.add(0);
     }
 
+    public List<Integer> getBalls() {
+        return balls;
+    }
 
+    public void setBalls(List<Integer> balls) {
+        this.balls = balls;
+    }
+
+    public Integer getTurns() {
+        return turns;
+    }
+
+    public void setTurns(Integer turns) {
+        this.turns = turns;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
