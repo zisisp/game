@@ -15,40 +15,43 @@ import java.util.Map;
  * http://adventofcode.com/
  */
 public class Test7 {//([a-z])\1
-    public static final String test1 = "123 -> x\n" +
-            "456 -> y\n" +
-            "x AND y -> d\n" +
-            "x OR y -> e\n" +
-            "x LSHIFT 2 -> f\n" +
-            "y RSHIFT 2 -> g\n" +
-            "NOT x -> h\n" +
-            "NOT y -> i";
+    public static final String test1 =
+            "123 -> x\n" +
+                    "x AND y -> d\n" +
+                    "x OR y -> e\n" +
+                    "x LSHIFT 2 -> f\n" +
+                    "y RSHIFT 2 -> g\n" +
+                    "NOT x -> h\n" +
+                    "456 -> y\n" +
+                    "NOT y -> i";
 
     public static void main(String[] args) {
-        Map<String, String> wireValues = parseInstructionsToMap(test1);
-        System.out.println("wireValues.get(\"d\") = " + "72".equals(parseValue(wireValues, "d")) + "-" + wireValues.get("d"));
-        System.out.println("wireValues.get(\"e\") = " + "507".equals(parseValue(wireValues, "e")) + "-" + wireValues.get("e"));
-        System.out.println("wireValues.get(\"f\") = " + "492".equals(parseValue(wireValues, "f")) + "-" + wireValues.get("f"));
-        System.out.println("wireValues.get(\"g\") = " + "114".equals(parseValue(wireValues, "g")) + "-" + wireValues.get("g"));
-        System.out.println("wireValues.get(\"h\") = " + "65412".equals(parseValue(wireValues, "h")) + "-" + wireValues.get("h"));
-        System.out.println("wireValues.get(\"i\") = " + "65079".equals(parseValue(wireValues, "i")) + "-" + wireValues.get("i"));
-        System.out.println("wireValues.get(\"x\") = " + "123".equals(parseValue(wireValues, "x")) + "-" + wireValues.get("x"));
-        System.out.println("wireValues.get(\"y\") = " + "456".equals(parseValue(wireValues, "y")) + "-" + wireValues.get("y"));
+//        Map<String, String> wireValues = parseInstructionsToMap(test1, null);
+//        System.out.println("72".equals(parseValue(wireValues, "d")) + "-" + wireValues.get("d"));
+//        System.out.println("507".equals(parseValue(wireValues, "e")) + "-" + wireValues.get("e"));
+//        System.out.println("492".equals(parseValue(wireValues, "f")) + "-" + wireValues.get("f"));
+//        System.out.println("114".equals(parseValue(wireValues, "g")) + "-" + wireValues.get("g"));
+//        System.out.println("65412".equals(parseValue(wireValues, "h")) + "-" + wireValues.get("h"));
+//        System.out.println("65079".equals(parseValue(wireValues, "i")) + "-" + wireValues.get("i"));
+//        System.out.println("123".equals(parseValue(wireValues, "x")) + "-" + wireValues.get("x"));
+//        System.out.println("456".equals(parseValue(wireValues, "y")) + "-" + wireValues.get("y"));
 
-        Map<String,String> instructionsMap=parseInstructionsToMap(instructions);
-//        String valueForA=parseValue(instructionsMap,"a");
-        System.out.println("valueForA= " + instructionsMap.get("a"));
+        Map<String, String> instructionsMap = parseInstructionsToMap(instructions, null);
+        String valueForA=parseValue(instructionsMap,"a");
+        Map<String,String> result2=parseInstructionsToMap(instructions,valueForA);
+        System.out.println("instructionsMap = " + result2.get("a"));
 
     }
 
-
-
-    private static Map<String, String> parseInstructionsToMap(String test1) {
+    private static Map<String, String> parseInstructionsToMap(String test1, String valueForA) {
         Map<String, String> toReturn = new HashMap<>();
         for (String line : test1.split("\n")) {
             String value = line.split(" -> ")[1];
             String instructions = line.split(" -> ")[0];
             toReturn.put(value, instructions);
+        }
+        if (valueForA != null) {
+            toReturn.put("b",valueForA);
         }
         parseMap(toReturn);
         return toReturn;
@@ -62,7 +65,9 @@ public class Test7 {//([a-z])\1
             for (String s : toReturn.keySet()) {
                 count++;
                 if (!StringUtils.isNumeric(toReturn.get(s).replace("-", ""))) {
-                    toReturn.put(s, parseValue(toReturn, s));
+                    String value = parseValue(toReturn, s);
+                    toReturn.put(s, value);
+                    updateMap(toReturn);
                     everyValueResolved = false;
                     System.out.println("count = " + count);
                     break;
@@ -73,34 +78,68 @@ public class Test7 {//([a-z])\1
         }
     }
 
+    private static void updateMap(Map<String, String> toReturn) {
+        for (String key : toReturn.keySet()) {
+            String value = toReturn.get(key);
+            if (StringUtils.isNumeric(value)) {
+                for (String s : toReturn.keySet()) {
+                    String[] split=toReturn.get(s).split(" ");
+                    for (int i = 0; i < split.length; i++) {
+                        if (split[i].equals(key)) {
+                            split[i]=value;
+                        }
+                    }
+                    toReturn.put(s,StringUtils.join(split," "));
+                }
+            }
+        }
+    }
+
     private static String parseValue(Map<String, String> toReturn, String s) {
-        System.out.print("s = " + s);
-        System.out.println(" == toReturn.get(s) = " + toReturn.get(s));
         if (StringUtils.isNumeric(s)) {
             return s;
         }
+//        System.out.println("s = " + s);
+//        System.out.println("toReturn.get(s) = " + toReturn.get(s));
         String[] split = toReturn.get(s).split(" ");
 
         if (split.length == 1) {
 //            System.out.print("Parsing = ## " + s+" ##");
             if (StringUtils.isNumeric(split[0])) {
                 return split[0];
-            } else
+            } else {
+                String value = parseValue(toReturn, toReturn.get(s));
+                toReturn.put(toReturn.get(s),value);
                 return parseValue(toReturn, toReturn.get(s));
+            }
         } else if (split.length == 2) {
             return (~Integer.parseInt(parseValue(toReturn, split[1])) & 65535) + "";
         } else {
             String first = split[0];
             String second = split[2];
-            if (split[1].equals("OR")) {
-                return (Integer.parseInt(parseValue(toReturn, first)) | Integer.parseInt(parseValue(toReturn, second))) + "";
-            } else if (split[1].equals("AND")) {
-                return (Integer.parseInt(parseValue(toReturn, first)) & Integer.parseInt(parseValue(toReturn, second))) + "";
-            } else {
-                if (split[1].contains("LSHIFT")) {
-                    return (Integer.parseInt(parseValue(toReturn, first)) << Integer.parseInt(second)) + "";
-                } else {
-                    return (Integer.parseInt(parseValue(toReturn, first)) >> Integer.parseInt(second)) + "";
+            switch (split[1]) {
+                case "OR": {
+                    String firstValue = parseValue(toReturn, first);
+                    String secondValue = parseValue(toReturn, second);
+                    if (!StringUtils.isNumeric(first)) toReturn.put(first, firstValue);
+                    if (!StringUtils.isNumeric(second)) toReturn.put(second, secondValue);
+                    return (Integer.parseInt(firstValue) | Integer.parseInt(secondValue)) + "";
+                }
+                case "AND": {
+                    String firstValue = parseValue(toReturn, first);
+                    String secondValue = parseValue(toReturn, second);
+                    if (!StringUtils.isNumeric(first)) toReturn.put(first, firstValue);
+                    if (!StringUtils.isNumeric(second)) toReturn.put(second, secondValue);
+                    return (Integer.parseInt(firstValue) & Integer.parseInt(secondValue)) + "";
+                }
+                default: {
+                    String firstValue = parseValue(toReturn, first);
+                    if (!StringUtils.isNumeric(first)) toReturn.put(first, firstValue);
+                    if (split[1].contains("LSHIFT")) {
+                        return (Integer.parseInt(firstValue) << Integer.parseInt(second)) + "";
+                    } else {
+                        return (Integer.parseInt(firstValue) >> Integer.parseInt(second)) + "";
+                    }
                 }
             }
         }
@@ -201,7 +240,6 @@ public class Test7 {//([a-z])\1
             "iv AND jb -> jd\n" +
             "cg OR ch -> ci\n" +
             "iu AND jf -> jh\n" +
-            "lx -> a\n" +
             "1 AND cc -> cd\n" +
             "ly OR lz -> ma\n" +
             "NOT el -> em\n" +
@@ -444,5 +482,6 @@ public class Test7 {//([a-z])\1
             "NOT hj -> hk\n" +
             "gj RSHIFT 3 -> gl\n" +
             "fo RSHIFT 3 -> fq\n" +
+            "lx -> a\n" +
             "he RSHIFT 2 -> hf";
 }
