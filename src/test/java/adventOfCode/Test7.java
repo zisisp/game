@@ -1,3 +1,6 @@
+package adventOfCode;
+
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -20,23 +23,25 @@ public class Test7 {//([a-z])\1
             "y RSHIFT 2 -> g\n" +
             "NOT x -> h\n" +
             "NOT y -> i";
-    public static final Map<String, String> tempMap = new HashMap<>();
 
     public static void main(String[] args) {
         Map<String, String> wireValues = parseInstructionsToMap(test1);
-        System.out.println("wireValues.get(\"d\") = " + wireValues.get("d").equals("72") + "-" + wireValues.get("d"));
-        System.out.println("wireValues.get(\"e\") = " + wireValues.get("e").equals("507") + "-" + wireValues.get("e"));
-        System.out.println("wireValues.get(\"f\") = " + wireValues.get("f").equals("492") + "-" + wireValues.get("f"));
-        System.out.println("wireValues.get(\"g\") = " + wireValues.get("g").equals("114") + "-" + wireValues.get("g"));
-        System.out.println("wireValues.get(\"h\") = " + wireValues.get("h").equals("65412") + "-" + wireValues.get("h"));
-        System.out.println("wireValues.get(\"i\") = " + wireValues.get("i").equals("65079") + "-" + wireValues.get("i"));
-        System.out.println("wireValues.get(\"x\") = " + wireValues.get("x").equals("123") + "-" + wireValues.get("x"));
-        System.out.println("wireValues.get(\"y\") = " + wireValues.get("y").equals("456") + "-" + wireValues.get("y"));
+        System.out.println("wireValues.get(\"d\") = " + "72".equals(parseValue(wireValues, "d")) + "-" + wireValues.get("d"));
+        System.out.println("wireValues.get(\"e\") = " + "507".equals(parseValue(wireValues, "e")) + "-" + wireValues.get("e"));
+        System.out.println("wireValues.get(\"f\") = " + "492".equals(parseValue(wireValues, "f")) + "-" + wireValues.get("f"));
+        System.out.println("wireValues.get(\"g\") = " + "114".equals(parseValue(wireValues, "g")) + "-" + wireValues.get("g"));
+        System.out.println("wireValues.get(\"h\") = " + "65412".equals(parseValue(wireValues, "h")) + "-" + wireValues.get("h"));
+        System.out.println("wireValues.get(\"i\") = " + "65079".equals(parseValue(wireValues, "i")) + "-" + wireValues.get("i"));
+        System.out.println("wireValues.get(\"x\") = " + "123".equals(parseValue(wireValues, "x")) + "-" + wireValues.get("x"));
+        System.out.println("wireValues.get(\"y\") = " + "456".equals(parseValue(wireValues, "y")) + "-" + wireValues.get("y"));
 
-        Map<String,String> result=parseInstructionsToMap(instructions);
-        System.out.println("result = " + result.get("a"));
+        Map<String,String> instructionsMap=parseInstructionsToMap(instructions);
+//        String valueForA=parseValue(instructionsMap,"a");
+        System.out.println("valueForA= " + instructionsMap.get("a"));
 
     }
+
+
 
     private static Map<String, String> parseInstructionsToMap(String test1) {
         Map<String, String> toReturn = new HashMap<>();
@@ -69,12 +74,17 @@ public class Test7 {//([a-z])\1
     }
 
     private static String parseValue(Map<String, String> toReturn, String s) {
-//        System.out.println("Parsing = " + s);
-        String[] split = s.split(" ");
+        System.out.print("s = " + s);
+        System.out.println(" == toReturn.get(s) = " + toReturn.get(s));
+        if (StringUtils.isNumeric(s)) {
+            return s;
+        }
+        String[] split = toReturn.get(s).split(" ");
 
         if (split.length == 1) {
-            if (StringUtils.isNumeric(s)) {
-                return s;
+//            System.out.print("Parsing = ## " + s+" ##");
+            if (StringUtils.isNumeric(split[0])) {
+                return split[0];
             } else
                 return parseValue(toReturn, toReturn.get(s));
         } else if (split.length == 2) {
