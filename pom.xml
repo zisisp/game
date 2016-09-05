@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>ZisisPontikasGame</name>
-    <description>Game of moving balls on pits</description>
+    <description>Game of moving stones on pits</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

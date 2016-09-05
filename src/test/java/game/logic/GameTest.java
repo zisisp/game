@@ -2,8 +2,6 @@ package game.logic;
 
 import game.Application;
 import junit.framework.TestCase;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +29,8 @@ public class GameTest extends TestCase {
         GameState newGameState=game.makeTheMove(gameState, 0);
 
         assertTrue("It should be still be "+startingPlayer+" players turn",newGameState.playersTurn==startingPlayer);
-        assertTrue("First hole should have zero balls",newGameState.players.get(startingPlayer).balls.get(0)==0);
-        assertTrue("Big hole should have 1 ball", newGameState.players.get(startingPlayer).balls.get(6) == 1);
+        assertTrue("First pit should have zero stones",newGameState.players.get(startingPlayer).stones.get(0)==0);
+        assertTrue("Big pit should have 1 stone", newGameState.players.get(startingPlayer).stones.get(6) == 1);
     }
 
 
@@ -52,22 +50,22 @@ public class GameTest extends TestCase {
     public void testLastMove() {
         GameState gameState = new GameState();
         Player player1=gameState.players.get(0);
-        List<Integer> player1Balls= Arrays.asList(0, 0, 0, 0, 0, 6, 6);
-        player1.balls=player1Balls;
+        List<Integer> player1Stones= Arrays.asList(0, 0, 0, 0, 0, 6, 6);
+        player1.stones =player1Stones;
         Player player2=gameState.players.get(1);
-        List<Integer> player2Balls= Arrays.asList(7, 8, 8, 8, 8, 8,13 );
-        player2.balls=player2Balls;
+        List<Integer> player2Stones= Arrays.asList(7, 8, 8, 8, 8, 8,13 );
+        player2.stones =player2Stones;
         gameState.playersTurn=1;
 
         game.makeTheMove(gameState, 0);
         assertTrue("Game winner should be player 2", gameState.winner == 1);
         assertTrue("Game should have ended",gameState.gameEnded);
-        assertTrue("Player1 should not have any balls in his pits", player1HasNoMoreBalls(gameState.players.get(0)));
+        assertTrue("Player1 should not have any stones in his pits", player1HasNoMoreStones(gameState.players.get(0)));
     }
 
-    private boolean player1HasNoMoreBalls(Player player) {
+    private boolean player1HasNoMoreStones(Player player) {
         for (int i = 0; i < 6; i++) {
-            if (player.balls.get(i) != 0) {
+            if (player.stones.get(i) != 0) {
                 return false;
             }
         }
