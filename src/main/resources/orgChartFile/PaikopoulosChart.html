@@ -8,7 +8,22 @@
 </head>
 <body onload="init()">
 <div id="sample">
-    <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 600px"></div>
+    <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 500px"></div>
+    <div>
+        <div id="myInspector">
+
+        </div>
+    </div>
+    <div>
+        <div>
+            <button id="SaveButton" onclick="save()">Save</button>
+            <button onclick="load()">Load</button>
+            Diagram Model saved in JSON format:
+        </div>
+    <textarea id="mySavedModel" style="width:100%;height:250px">
+
+    </textarea>
+    </div>
 </div>
 <script id="code">
     var nodeIdCounter = -1; // use a sequence to guarantee key uniqueness as we add/remove/modify nodes
@@ -18,23 +33,22 @@
         var model = $(go.TreeModel);
         model.nodeDataArray =
                 [
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"1",    name:"Παϊκόπουλος Γιώργος", title:"Επιθεωρητής"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"2",    name:"Νταρακλήτση Ελένη", title:"Αναπληρώτρια Διευθύντρια", parent:"1"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"3",    name:"Γεωργόπουλος Δημήτρης", title:"Διευθυντής Ομάδας", parent:"2"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"4",    name:"Τζίνης Νικόλαος", title:"Διευθυντής Ομάδας", parent:"3"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"5",    name:"Ζαχαρής Ανδρέας", title:"Διευθυντής Ομάδας", parent:"4"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"6",    name:"Βαρελά Ελένη", title:"Διευθύντρια Ομάδας", parent:"5"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"7",    name:"Πλάσης Ιάσων", title:"Διευθυντής Ομάδας", parent:"1"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"8",    name:"Βαμβακάς Μάριος", title:"Διευθυντής Ομάδας", parent:"7"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"9",    name:"Μαλαμαπλής Μιχάλης", title:"Διευθυντής Ομάδας", parent:"8"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"10",   name:"Πετρόχειλος Μανώλης", title:"Διευθυντής Ομάδας", parent:"9"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"11",   name:"Παπαδόπουλος Νίκος", title:"Διευθυντής Ομάδας", parent:"10"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"12",   name:"Κουτζαμάνης Γεώργιος", title:"Διευθυντής Γραφείου"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"13",   name:"Μουμτζής Στέλιοσ", title:"Αναπληρωτής Διευθυντής", parent:"12"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"14",   name:"Βαρδαξόγρου Αντώνης", title:"Διευθυντής Ομάδας", parent:"13"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"15",   name:"Χαλκοδαίμων Παναγιώτης", title:"Διευθυντής Γραφείου"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"16",   name:"Λαρδής Ιορδάνης", title:"Διευθυντής Ομάδας", parent:"15"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"16",   name:"Λιγάτου Δέσποινα", title:"Διευθύντρια Ομάδας", parent:"15"}
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"1",    name:"Stella Payne Diaz", title:"CEO"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"2",    name:"Luke Warm", title:"VP Marketing/Sales", parent:"1"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"3",    name:"Meg Meehan Hoffa", title:"Sales", parent:"2"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"4",    name:"Peggy Flaming", title:"VP Engineering", parent:"1"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"5",    name:"Saul Wellingood", title:"Manufacturing", parent:"4"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"6",    name:"Al Ligori", title:"Marketing", parent:"2"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"7",    name:"Dot Stubadd", title:"Sales Rep", parent:"3"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"8",    name:"Les Ismore", title:"Project Mgr", parent:"5"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"9",    name:"April Lynn Parris", title:"Events Mgr", parent:"6"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"10",   name:"Xavier Breath", title:"Engineering", parent:"4"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"11",   name:"Anita Hammer", title:"Process", parent:"5"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"12",   name:"Billy Aiken", title:"Software", parent:"10"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"13",   name:"Stan Wellback", title:"Testing", parent:"10"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"14",   name:"Marge Innovera", title:"Hardware", parent:"10"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"15",   name:"Evan Elpus", title:"Quality", parent:"5"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"16",   name:"Lotta B. Essen", title:"Sales Rep", parent:"3"}
                 ];
 
         if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
@@ -250,8 +264,8 @@
                                                     minSize: new go.Size(10, 16)
                                                 },
                                                 new go.Binding("text", "name").makeTwoWay()),
-//                                        $(go.TextBlock, "", textStyle(),
-//                                                {row: 1, column: 0}),
+                                        $(go.TextBlock, "Title: ", textStyle(),
+                                                {row: 1, column: 0}),
                                         $(go.TextBlock, textStyle(),
                                                 {
                                                     row: 1, column: 1, columnSpan: 4,
