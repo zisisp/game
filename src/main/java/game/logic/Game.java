@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Game {
-    private static final int BIG_HOLE_INDEX = 6;
+    private static final int BIG_PIT_INDEX = 6;
 
     public GameState makeTheMove(GameState gameState, Integer originatingPit) {
         if (inputWrong(originatingPit)) {
@@ -16,7 +16,7 @@ public class Game {
         if (gameState == null) {
             gameState = new GameState();
         }
-        gameState = moveBalls(originatingPit, gameState);
+        gameState = moveStones(originatingPit, gameState);
         return gameState;
     }
 
@@ -25,24 +25,24 @@ public class Game {
     }
 
 
-    private GameState moveBalls(Integer originatingPit, GameState gameState) {
+    private GameState moveStones(Integer originatingPit, GameState gameState) {
         Player moving = gameState.players.get(gameState.playersTurn);
-        int ballsToMove = moving.balls.get(originatingPit);
-        moving.balls.set(originatingPit, 0);//empty this pit
+        int stonesToMove = moving.stones.get(originatingPit);
+        moving.stones.set(originatingPit, 0);//empty this pit
         int indexToUse = 0;
         boolean changePlayer = true;
-        for (int i = originatingPit + 1; i <(originatingPit + 1)+ ballsToMove; i++) {
+        for (int i = originatingPit + 1; i <(originatingPit + 1)+ stonesToMove; i++) {
             indexToUse = i % 7;
-            moving.balls.set(indexToUse, moving.balls.get(indexToUse) + 1);
+            moving.stones.set(indexToUse, moving.stones.get(indexToUse) + 1);
             if (indexToUse == 6) {
                 changePlayer = false;
             }
         }
 
-        //see if you have captured opponents balls
+        //see if you have captured opponents stones
         boolean captured=false;
         if (indexToUse != 6) {
-            captured = captureOpponentsBalls(gameState, indexToUse);
+            captured = captureOpponentsStones(gameState, indexToUse);
         }
         if (captured) {
             if (gameEnded(gameState)) {
@@ -61,21 +61,21 @@ public class Game {
     private boolean gameEnded(GameState gameState) {
         Player opponent=gameState.players.get(Math.abs(gameState.playersTurn-1));
         for (int i = 0; i < 6; i++) {
-            if (opponent.balls.get(i) != 0) {
+            if (opponent.stones.get(i) != 0) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean captureOpponentsBalls(GameState gameState, int indexToUse) {
+    private boolean captureOpponentsStones(GameState gameState, int indexToUse) {
         Player opponent = gameState.players.get(Math.abs(gameState.playersTurn - 1));
-        //see if you have captured opponents balls
-        Integer ballsInPit = opponent.balls.get(5 - indexToUse);
-        if (ballsInPit != 0) {
+        //see if you have captured opponents stones
+        Integer stonesInPit = opponent.stones.get(5 - indexToUse);
+        if (stonesInPit != 0) {
             Player playerCapturing = gameState.players.get(gameState.playersTurn);
-            opponent.balls.set(5 - indexToUse, 0);
-            playerCapturing.balls.set(indexToUse, playerCapturing.balls.get(indexToUse) + ballsInPit);
+            opponent.stones.set(5 - indexToUse, 0);
+            playerCapturing.stones.set(indexToUse, playerCapturing.stones.get(indexToUse) + stonesInPit);
             return true;
         } else return false;
     }
