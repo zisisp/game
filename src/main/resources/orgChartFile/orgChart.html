@@ -8,7 +8,7 @@
 </head>
 <body onload="init()">
 <div id="sample">
-    <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 600px"></div>
+    <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 800px"></div>
 </div>
 <script id="code">
     var nodeIdCounter = -1; // use a sequence to guarantee key uniqueness as we add/remove/modify nodes
@@ -18,23 +18,27 @@
         var model = $(go.TreeModel);
         model.nodeDataArray =
                 [
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"1",    name:"Παϊκόπουλος Γιώργος", title:"Επιθεωρητής"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"2",    name:"Νταρακλήτση Ελένη", title:"Αναπληρώτρια Διευθύντρια", parent:"1"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"19",   name:"Παϊκόπουλος Γιώργος", title:"Διευθυντής Γραφείου", parent:"1"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"1",    name:"Παϊκόπουλος Γιώργος", title:"Συντονιστής Επιθεωρητής Πωλήσεων"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"2",    name:"Νταρακλήτση Ελένη", title:"Αναπληρώτρια Διευθύντρια", parent:"19"},
                     {pic:"e8nikiLogo.png",url:"www.google.com",key:"3",    name:"Γεωργόπουλος Δημήτρης", title:"Διευθυντής Ομάδας", parent:"2"},
                     {pic:"e8nikiLogo.png",url:"www.google.com",key:"4",    name:"Τζίνης Νικόλαος", title:"Διευθυντής Ομάδας", parent:"3"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"5",    name:"Ζαχαρής Ανδρέας", title:"Διευθυντής Ομάδας", parent:"4"},
+                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"5",    name:"Ζάχαρης Ανδρέας", title:"Διευθυντής Ομάδας", parent:"4"},
                     {pic:"e8nikiLogo.png",url:"www.google.com",key:"6",    name:"Βαρελά Ελένη", title:"Διευθύντρια Ομάδας", parent:"5"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"7",    name:"Πλάσης Ιάσων", title:"Διευθυντής Ομάδας", parent:"1"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"8",    name:"Βαμβακάς Μάριος", title:"Διευθυντής Ομάδας", parent:"7"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"9",    name:"Μαλαμαπλής Μιχάλης", title:"Διευθυντής Ομάδας", parent:"8"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"10",   name:"Πετρόχειλος Μανώλης", title:"Διευθυντής Ομάδας", parent:"9"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"11",   name:"Παπαδόπουλος Νίκος", title:"Διευθυντής Ομάδας", parent:"10"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"12",   name:"Κουτζαμάνης Γεώργιος", title:"Διευθυντής Γραφείου"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"13",   name:"Μουμτζής Στέλιοσ", title:"Αναπληρωτής Διευθυντής", parent:"12"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"14",   name:"Βαρδαξόγρου Αντώνης", title:"Διευθυντής Ομάδας", parent:"13"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"15",   name:"Χαλκοδαίμων Παναγιώτης", title:"Διευθυντής Γραφείου"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"16",   name:"Λαρδής Ιορδάνης", title:"Διευθυντής Ομάδας", parent:"15"},
-                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"16",   name:"Λιγάτου Δέσποινα", title:"Διευθύντρια Ομάδας", parent:"15"}
+//                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"7",    name:"Πλατσής Ιάσων", title:"Κορυφαίος Ασφαλιστής", parent:"19"},
+//                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"8",    name:"Βαμβακάς Μάριος", title:"Κορυφαίος Ασφαλιστής", parent:"19"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"9",    name:"Καλαμπαλής Μιχάλης", title:"Διευθυντής Ομάδας", parent:"19"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"10",   name:"Πετρόχειλος Μανώλης", title:"Διευθυντής Ομάδας", parent:"9"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"11",   name:"Παπαδόπουλος Νίκος", title:"Διευθυντής Ομάδας", parent:"10"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"12",   name:"Κουτζαμάνης Γεώργιος", title:"Διευθυντής Γραφείου",parent:"1"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"13",   name:"Μουμτζής Στέλιος", title:"Αναπληρωτής Διευθυντής", parent:"12"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"14",   name:"Βαρδαξόγλου Αντώνης", title:"Διευθυντής Ομάδας", parent:"13"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"15",   name:"Χαλκοδαίμων Παναγιώτης", title:"Διευθυντής Γραφείου",parent:"1"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"16",   name:"Λαρδής Ιορδάνης", title:"Διευθυντής Ομάδας", parent:"15"},
+//                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"17",   name:"Λιγάτου Δέσποινα", title:"Κορυφαία Ασφαλίστρια", parent:"15"},
+            {pic:"e8nikiLogo.png",url:"www.google.com",key:"17",   name:"Λάμπρου Λευτέρης", title:"Διευθυντής Ομάδας", parent:"16"}
+//                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"18",   name:"Κανελλόπουλος Σωτήρης", title:"Κορυφαίος Ασφαλιστής", parent:"19"}
+//                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"20",   name:"Λιγάτου Δέσποινα", title:"Κορυφαία Ασφαλίστρια", parent:"15"}
                 ];
 
         if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
