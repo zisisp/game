@@ -8,7 +8,7 @@
 </head>
 <body onload="init()">
 <div id="sample">
-    <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 800px"></div>
+    <div id="myDiagramDiv" style="background-color: #032660; border: solid 1px black; height: 800px"></div>
 </div>
 <script id="code">
     var nodeIdCounter = -1; // use a sequence to guarantee key uniqueness as we add/remove/modify nodes
@@ -73,14 +73,19 @@
                         title: "Διευθύντρια Ομάδας",
                         parent: "5"
                     },
-//                    {pic:"http://www.paikopoulos.gr/wp-content/uploads/2016/04/platsis-260x260.jpg",url:"www.paikopoulos.gr/synergates/platsis-iason/",key:"7",    name:"Πλατσής Ιάσων", title:"Κορυφαίος Ασφαλιστής", parent:"19"},
-//                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"8",    name:"Βαμβακάς Μάριος", title:"Κορυφαίος Ασφαλιστής", parent:"19"},
             {
                 pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/1-1-260x260.jpg",
                 url: "www.paikopoulos.gr/synergates/karampalis-michalis/",
                 key: "9",
                 name: "Καλαμπαλής Μιχάλης",
                 title: "Διευθυντής Ομάδας",
+                parent: "18"
+            }, {
+                pic: "",
+                url: "",
+                key: "18",
+                name: "",
+                title: "",
                 parent: "19"
             },
             {
@@ -132,14 +137,20 @@
                 parent: "1"
             },
             {
+                pic: "",
+                url: "",
+                key: "20",
+                name: "",
+                title: "",
+                parent: "15"
+            },{
                 pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/gnet-2-260x260.jpg",
                 url: "www.paikopoulos.gr/synergates/lardis-iordanis/",
                 key: "16",
                 name: "Λαρδής Ιορδάνης",
                 title: "Διευθυντής Ομάδας",
-                parent: "15"
+                parent: "20"
             },
-//                    {pic:"http://www.paikopoulos.gr/wp-content/uploads/2016/04/ligatou-260x260.png",url:"www.paikopoulos.gr/synergates/ligatou-despina/",key:"17",   name:"Λιγάτου Δέσποινα", title:"Κορυφαία Ασφαλίστρια", parent:"15"},
             {
                 pic: "e8nikiLogo.png",
                 url: "www.google.com",
@@ -148,8 +159,6 @@
                 title: "Διευθυντής Ομάδας",
                 parent: "16"
             }
-//                    {pic:"http://www.paikopoulos.gr/wp-content/uploads/2016/04/12841360_1001860026555370_2538320904148771066_o-260x260.jpg",url:"www.paikopoulos.gr/synergates/kanellopoulos-sotiris/",key:"18",   name:"Κανελλόπουλος Σωτήρης", title:"Κορυφαίος Ασφαλιστής", parent:"19"}
-//                    {pic:"e8nikiLogo.png",url:"www.google.com",key:"20",   name:"Λιγάτου Δέσποινα", title:"Κορυφαία Ασφαλίστρια", parent:"15"}
         ];
 
         if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
@@ -171,7 +180,7 @@
                             layout: $(go.TreeLayout,
                                     {
                                         treeStyle: go.TreeLayout.StyleLastParents,
-                                        arrangement: go.TreeLayout.ArrangementHorizontal,
+                                        arrangement: go.TreeLayout.ArrangementFixedRoots,
                                         // properties for most of the tree:
                                         angle: 90,
                                         layerSpacing: 35,
@@ -216,7 +225,7 @@
             }
             myDiagram.commitTransaction("clear boss");
         });
-        var levelColors = ["#04ACEA/#04ACEA", "#2672EC/#2E8DEF", "#8C0095/#A700AE", "#5133AB/#643EBF",
+        var levelColors = ["#00529C/#00529C", "#E72331/#E72331", "#8C0095/#A700AE", "#D24726/#DC572E",
             "#D24726/#DC572E", "#D24726/#DC572E", "#D24726/#DC572E", "#D24726/#DC572E"];
 //            "#008299/#00A0B1", "#D24726/#DC572E", "#008A00/#00A600", "#094AB2/#0A5BC4"];
         // override TreeLayout.commitNodes to also modify the background brush based on the tree depth level
@@ -265,7 +274,7 @@
         function nodeClick(e, obj) {
             var clicked = obj.part;
             if (clicked !== null) {
-                window.location.href = "http://" + encodeURIComponent(clicked.data.url);
+                window.location.href = "http://" + clicked.data.url;
             }
         }
 
@@ -400,61 +409,6 @@
                 );  // end Node
         // the context menu allows users to make a position vacant,
         // remove a role and reassign the subtree, or remove a department
-        myDiagram.nodeTemplate.contextMenu =
-                $(go.Adornment, "Vertical",
-                        $("ContextMenuButton",
-                                $(go.TextBlock, "Vacate Position"),
-                                {
-                                    click: function (e, obj) {
-                                        var node = obj.part.adornedPart;
-                                        if (node !== null) {
-                                            var thisemp = node.data;
-                                            myDiagram.startTransaction("vacate");
-                                            // update the key, name, and comments
-                                            myDiagram.model.setKeyForNodeData(thisemp, getNextKey());
-                                            myDiagram.model.setDataProperty(thisemp, "name", "(Vacant)");
-                                            myDiagram.model.setDataProperty(thisemp, "comments", "");
-                                            myDiagram.commitTransaction("vacate");
-                                        }
-                                    }
-                                }
-                        ),
-                        $("ContextMenuButton",
-                                $(go.TextBlock, "Remove Role"),
-                                {
-                                    click: function (e, obj) {
-                                        // reparent the subtree to this node's boss, then remove the node
-                                        var node = obj.part.adornedPart;
-                                        if (node !== null) {
-                                            myDiagram.startTransaction("reparent remove");
-                                            var chl = node.findTreeChildrenNodes();
-                                            // iterate through the children and set their parent key to our selected node's parent key
-                                            while (chl.next()) {
-                                                var emp = chl.value;
-                                                myDiagram.model.setParentKeyForNodeData(emp.data, node.findTreeParentNode().data.key);
-                                            }
-                                            // and now remove the selected node itself
-                                            myDiagram.model.removeNodeData(node.data);
-                                            myDiagram.commitTransaction("reparent remove");
-                                        }
-                                    }
-                                }
-                        ),
-                        $("ContextMenuButton",
-                                $(go.TextBlock, "Remove Department"),
-                                {
-                                    click: function (e, obj) {
-                                        // remove the whole subtree, including the node itself
-                                        var node = obj.part.adornedPart;
-                                        if (node !== null) {
-                                            myDiagram.startTransaction("remove dept");
-                                            myDiagram.removeParts(node.findTreeParts());
-                                            myDiagram.commitTransaction("remove dept");
-                                        }
-                                    }
-                                }
-                        )
-                );
         // define the Link template
         myDiagram.linkTemplate =
                 $(go.Link, go.Link.Orthogonal,

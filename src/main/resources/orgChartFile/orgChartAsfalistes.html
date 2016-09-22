@@ -15,13 +15,13 @@
 
     function init() {
         var $ = go.GraphObject.make;  // for conciseness in defining templates
-        var model = $(go.TreeModel);
+        var model = $(go.CirMo);
         model.nodeDataArray =
                 [
 
                     {
                         pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/platsis-260x260.jpg",
-                        url: "www.paikopoulos.gr/synergates/platsis-iason/",
+                        url: "www.paikopoulos.gr/synergates/platsis-iason",
                         key: "7",
                         name: "Πλατσής Ιάσων",
                         title: "Κορυφαίος Ασφαλιστής"
@@ -164,7 +164,7 @@
         function nodeClick(e, obj) {
             var clicked = obj.part;
             if (clicked !== null) {
-                window.location.href = "http://" + encodeURIComponent(clicked.data.url);
+                window.location.href = "http://" + clicked.data.url;
             }
         }
 
