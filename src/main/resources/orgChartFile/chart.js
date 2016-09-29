@@ -6,7 +6,7 @@ var model = $(go.TreeModel);
 model.nodeDataArray =
     [
         {
-            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/paikopoulosThumb.png",
+            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/PaikopoulosThumb.jpg",
             url: "www.paikopoulos.gr/istoria",
             key: "19",
             name: "Παϊκόπουλος Γιώργος",
@@ -14,7 +14,7 @@ model.nodeDataArray =
             parent: "1"
         },
         {
-            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/paikopoulosThumb.png",
+            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/PaikopoulosThumb.jpg",
             url: "www.paikopoulos.gr/istoria",
             key: "1",
             name: "Παϊκόπουλος Γιώργος",
@@ -341,7 +341,7 @@ myDiagram.nodeTemplate =
             $(go.Picture,
                 {
                     name: 'Picture',
-                    desiredSize: new go.Size(39, 50),
+                    desiredSize: new go.Size(80, 83),
                     margin: new go.Margin(6, 8, 6, 10),
                 },
                 new go.Binding("source", "pic")),
