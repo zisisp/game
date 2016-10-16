@@ -11,14 +11,16 @@ model.nodeDataArray =
             key: "19",
             name: "Παϊκόπουλος Γιώργος",
             title: "Διευθυντής Γραφείου",
-            parent: "1"
+            parent: "1",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/PaikopoulosThumb.jpg",
             url: "www.paikopoulos.gr/istoria",
             key: "1",
             name: "Παϊκόπουλος Γιώργος",
-            title: "Συντονιστής Επιθεωρητής Πωλήσεων"
+            title: "Συντονιστής Επιθεωρητής Πωλήσεων",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/ntaraklitsi-1-260x260.jpg",
@@ -26,7 +28,8 @@ model.nodeDataArray =
             key: "2",
             name: "Νταρακλήτση Ελένη",
             title: "Αναπληρώτρια Διευθύντρια",
-            parent: "19"
+            parent: "19",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/georgopoulos-260x260.jpg",
@@ -34,7 +37,8 @@ model.nodeDataArray =
             key: "3",
             name: "Γεωργόπουλος Δημήτρης",
             title: "Διευθυντής Ομάδας",
-            parent: "2"
+            parent: "2",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/tzinhs.jpg",
@@ -42,7 +46,8 @@ model.nodeDataArray =
             key: "4",
             name: "Τζίνης Νικόλαος",
             title: "Διευθυντής Ομάδας",
-            parent: "3"
+            parent: "3",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/Ζάχαρης-Ανδρέας1-260x260.jpg",
@@ -50,7 +55,8 @@ model.nodeDataArray =
             key: "5",
             name: "Ζάχαρης Ανδρέας",
             title: "Διευθυντής Ομάδας",
-            parent: "4"
+            parent: "4",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/gnet-4-260x260.jpg",
@@ -58,7 +64,8 @@ model.nodeDataArray =
             key: "6",
             name: "Βαρελά Ελένη",
             title: "Διευθύντρια Ομάδας",
-            parent: "5"
+            parent: "5",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/1-1-260x260.jpg",
@@ -66,22 +73,25 @@ model.nodeDataArray =
             key: "9",
             name: "Καλαμπαλής Μιχάλης",
             title: "Διευθυντής Ομάδας",
-            parent: "18"
+            parent: "18",
+            visible:true
         }, {
-        pic: "",
-        url: "",
-        key: "18",
-        name: "",
-        title: "",
-        parent: "19"
-    },
+            pic: "",
+            url: "http://www.paikopoulos.gr",
+            key: "18",
+            name: "",
+            title: "",
+            parent: "19",
+            visible:null
+        },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/petroxeilos.jpg",
             url: "www.paikopoulos.gr/synergates/petrochilos-emmanouil",
             key: "10",
             name: "Πετρόχειλος Μανώλης",
             title: "Διευθυντής Ομάδας",
-            parent: "9"
+            parent: "9",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/papadopoulos-260x260.jpg",
@@ -89,7 +99,8 @@ model.nodeDataArray =
             key: "11",
             name: "Παπαδόπουλος Νίκος",
             title: "Διευθυντής Ομάδας",
-            parent: "10"
+            parent: "10",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2015/10/20151221_183352-260x260.jpg",
@@ -97,7 +108,8 @@ model.nodeDataArray =
             key: "12",
             name: "Κουτζαμάνης Γεώργιος",
             title: "Διευθυντής Γραφείου",
-            parent: "1"
+            parent: "1",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/moumtzis-260x260.jpg",
@@ -105,7 +117,8 @@ model.nodeDataArray =
             key: "13",
             name: "Μουμτζής Στέλιος",
             title: "Αναπληρωτής Διευθυντής",
-            parent: "12"
+            parent: "12",
+            visible:true
         },
         {
             pic: "e8nikiLogo.png",
@@ -113,7 +126,8 @@ model.nodeDataArray =
             key: "14",
             name: "Βαρδαξόγλου Αντώνης",
             title: "Διευθυντής Ομάδας",
-            parent: "13"
+            parent: "13",
+            visible:true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2015/10/photo-1-260x260.jpg",
@@ -121,22 +135,25 @@ model.nodeDataArray =
             key: "15",
             name: "Χαλκοδαίμων Παναγιώτης",
             title: "Διευθυντής Γραφείου",
-            parent: "1"
+            parent: "1",
+            visible:true
         },
         {
             pic: "",
-            url: "",
+            url: "http://www.paikopoulos.gr",
             key: "20",
             name: "",
             title: "",
-            parent: "15"
+            parent: "15",
+            visible:null
         }, {
         pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/gnet-2-260x260.jpg",
         url: "www.paikopoulos.gr/synergates/lardis-iordanis/",
         key: "16",
         name: "Λαρδής Ιορδάνης",
         title: "Διευθυντής Ομάδας",
-        parent: "20"
+        parent: "20",
+        visible:true
     },
         {
             pic: "e8nikiLogo.png",
@@ -144,12 +161,13 @@ model.nodeDataArray =
             key: "17",
             name: "Λάμπρου Λευτέρης",
             title: "Διευθυντής Ομάδας",
-            parent: "16"
+            parent: "16",
+            visible:true
         }
     ];
 
-myDiagram =
-    $(go.Diagram, "myDiagramDiv", // must be the ID or reference to div
+    myDiagram =
+    $(go.Diagram, "paikopoulosDiv", // must be the ID or reference to div
         {
             initialContentAlignment: go.Spot.Center,
             maxSelectionCount: 1, // users can select only one part at a time
@@ -179,38 +197,6 @@ myDiagram =
             "undoManager.isEnabled": true // enable undo & redo
         });
 myDiagram.model = model;
-// when the document is modified, add a "*" to the title and enable the "Save" button
-myDiagram.addDiagramListener("Modified", function (e) {
-    var button = document.getElementById("SaveButton");
-    if (button) button.disabled = !myDiagram.isModified;
-    var idx = document.title.indexOf("*");
-    if (myDiagram.isModified) {
-        if (idx < 0) document.title += "*";
-    } else {
-        if (idx >= 0) document.title = document.title.substr(0, idx);
-    }
-});
-// manage boss info manually when a node or link is deleted from the diagram
-myDiagram.addDiagramListener("SelectionDeleting", function (e) {
-    var part = e.subject.first(); // e.subject is the myDiagram.selection collection,
-                                  // so we'll get the first since we know we only have one selection
-    myDiagram.startTransaction("clear boss");
-    if (part instanceof go.Node) {
-        var it = part.findTreeChildrenNodes(); // find all child nodes
-        while (it.next()) { // now iterate through them and clear out the boss information
-            var child = it.value;
-            var bossText = child.findObject("boss"); // since the boss TextBlock is named, we can access it by name
-            if (bossText === null) return;
-            bossText.text = undefined;
-        }
-    } else if (part instanceof go.Link) {
-        var child = part.toNode;
-        var bossText = child.findObject("boss"); // since the boss TextBlock is named, we can access it by name
-        if (bossText === null) return;
-        bossText.text = undefined;
-    }
-    myDiagram.commitTransaction("clear boss");
-});
 var levelColors = ["#00529C/#00529C", "#E72331/#E72331", "#8C0095/#A700AE", "#D24726/#DC572E",
     "#D24726/#DC572E", "#D24726/#DC572E", "#D24726/#DC572E", "#D24726/#DC572E"];
 //            "#008299/#00A0B1", "#D24726/#DC572E", "#008A00/#00A600", "#094AB2/#0A5BC4"];
@@ -233,28 +219,6 @@ myDiagram.layout.commitNodes = function () {
         }
     });
 };
-// This function is used to find a suitable ID when modifying/creating nodes.
-// We used the counter combined with findNodeDataForKey to ensure uniqueness.
-function getNextKey() {
-    var key = nodeIdCounter;
-    while (myDiagram.model.findNodeDataForKey(key.toString()) !== null) {
-        key = nodeIdCounter -= 1;
-    }
-    return key.toString();
-}
-
-// when a node is double-clicked, add a child to it
-//        function nodeDoubleClick(e, obj) {
-//            var clicked = obj.part;
-//            if (clicked !== null) {
-//                var thisemp = clicked.data;
-//                myDiagram.startTransaction("add employee");
-//                var nextkey = getNextKey();
-//                var newemp = { key: nextkey, name: "(new person)", title: "", parent: thisemp.key };
-//                myDiagram.model.addNodeData(newemp);
-//                myDiagram.commitTransaction("add employee");
-//            }
-//        }
 
 //this function reads the url param and redirects to the url link of the object
 function nodeClick(e, obj) {
@@ -326,7 +290,6 @@ myDiagram.nodeTemplate =
         },
         // for sorting, have the Node.text be the data.name
         new go.Binding("text", "name"),
-        // bind the Part.layerName to control the Node's layer depending on whether it isSelected
         new go.Binding("layerName", "isSelected", function (sel) {
             return sel ? "Foreground" : "";
         }).ofObject(),
@@ -336,7 +299,11 @@ myDiagram.nodeTemplate =
                 name: "SHAPE", fill: "white", stroke: null,
                 // set the port properties:
                 portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer"
-            }),
+            }
+            ,
+            new go.Binding("opacity", "visible", function(t) { return t ? 1 : 0; })
+            // new go.Binding("visible", "visible", function(t) { return t ? true : false; })
+        ),
         $(go.Panel, "Horizontal",
             $(go.Picture,
                 {

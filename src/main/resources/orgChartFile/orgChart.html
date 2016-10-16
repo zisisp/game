@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Παικόπουλος Επιθεώρηση</title>
+    <!--<script src="http://www.paikopoulos.gr/wp-content/uploads/2016/09/go.js"></script>-->
     <script src="http://www.paikopoulos.gr/wp-content/uploads/2016/09/go.js"></script>
     <script>
         var isStartingPage = document.URL.indexOf("http://www.paikopoulos.gr/") == 0;
         var containsChart = document.URL.indexOf("Chart") > -1;
         var containsOrganogramma = document.URL.indexOf("organogramma") > -1;
-        if (isStartingPage || containsChart || containsOrganogramma) {
-            loadScript('http://www.paikopoulos.gr/wp-content/uploads/2016/09/chart.js');
-        }
+//        if (isStartingPage || containsChart || containsOrganogramma) {
+//            loadScript('http://www.paikopoulos.gr/wp-content/uploads/2016/09/chart.js');
+//        }
         loadScript('chart.js');
         function loadScript(scr) {
             var head = document.getElementsByTagName('head')[0];
@@ -23,11 +24,9 @@
 </head>
 
 <!--<body onload="init()">-->
-<div id="sample">
-    <div id="myDiagramDiv" style="position:relative;background-color: #032660; border: solid 1px black; height: 900px"></div>
-</div>
-<div id="1">
-    <div id="2" style="position:relative;background-color: #60161c; border: solid 1px black; height: 100px;width: 100px;top: -50px;left: 0"></div>
-</div>
+
+    <div id="paikopoulosDiv" style="position:relative;background-color: #032660; border: solid 1px black; height: 900px"></div>
+    <div id="2" style="position:relative;background-color: #60161c; border: solid 1px black; height: 100px;width: 100px;top: -900px;left: 0"></div>
+
 </body>
 </html>
