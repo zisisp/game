@@ -8,7 +8,7 @@
 </head>
 <body onload="init()">
 <div id="sample">
-    <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 800px"></div>
+    <div id="diakekrimenoiAsfalistes" style="background-color: #696969; border: solid 1px black; height: 800px"></div>
 </div>
 <script id="code">
     var nodeIdCounter = -1; // use a sequence to guarantee key uniqueness as we add/remove/modify nodes
@@ -53,7 +53,7 @@
 
         if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
         myDiagram =
-                $(go.Diagram, "myDiagramDiv", // must be the ID or reference to div
+                $(go.Diagram, "diakekrimenoiAsfalistes", // must be the ID or reference to div
                         {
                             initialContentAlignment: go.Spot.Center,
                             maxSelectionCount: 1, // users can select only one part at a time

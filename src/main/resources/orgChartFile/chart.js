@@ -41,7 +41,7 @@ model.nodeDataArray =
             visible:true
         },
         {
-            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/tzinhs.jpg",
+            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/10/tzinhs-1.jpg",
             url: "www.paikopoulos.gr/synergates/tzinis-nikolaos/",
             key: "4",
             name: "Τζίνης Νικόλαος",
@@ -121,8 +121,8 @@ model.nodeDataArray =
             visible:true
         },
         {
-            pic: "e8nikiLogo.png",
-            url: "www.google.com",
+            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/10/Βαρδαξόγλου-Αντώνης.jpg",
+            url: "http://www.paikopoulos.gr/synergates/vardaxoglou-antonis/",
             key: "14",
             name: "Βαρδαξόγλου Αντώνης",
             title: "Διευθυντής Ομάδας",
@@ -156,8 +156,8 @@ model.nodeDataArray =
         visible:true
     },
         {
-            pic: "e8nikiLogo.png",
-            url: "www.google.com",
+            pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/10/lamprou_lefteris.jpg",
+            url: "http://www.paikopoulos.gr/synergates/lamprou-lefteris/",
             key: "17",
             name: "Λάμπρου Λευτέρης",
             title: "Διευθυντής Ομάδας",
@@ -300,8 +300,8 @@ myDiagram.nodeTemplate =
                 // set the port properties:
                 portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer"
             }
-            ,
-            new go.Binding("opacity", "visible", function(t) { return t ? 1 : 0; })
+
+            //new go.Binding("opacity", "visible", function(t) { return t ? 1 : 0; })
             // new go.Binding("visible", "visible", function(t) { return t ? true : false; })
         ),
         $(go.Panel, "Horizontal",
