@@ -1,6 +1,3 @@
-var nodeIdCounter = -1; // use a sequence to guarantee key uniqueness as we add/remove/modify nodes
-
-// alert("chart loaded1111");
 var $ = go.GraphObject.make;  // for conciseness in defining templates
 var model = $(go.TreeModel);
 model.nodeDataArray =
@@ -172,15 +169,6 @@ model.nodeDataArray =
             initialContentAlignment: go.Spot.Center,
             maxSelectionCount: 1, // users can select only one part at a time
             validCycle: go.Diagram.CycleDestinationTree, // make sure users can only create trees
-//                            "clickCreatingTool.archetypeNodeData": {}, // allow double-click in background to create a new node
-//                            "clickCreatingTool.insertPart": function(loc) {  // customize the data for the new node
-//                                this.archetypeNodeData = {
-//                                    key: getNextKey(), // assign the key based on the number of nodes
-//                                    name: "(new person)",
-//                                    title: ""
-//                                };
-//                                return go.ClickCreatingTool.prototype.insertPart.call(this, loc);
-//                            },
             layout: $(go.TreeLayout,
                 {
                     treeStyle: go.TreeLayout.StyleLastParents,
@@ -197,8 +185,8 @@ model.nodeDataArray =
             "undoManager.isEnabled": true // enable undo & redo
         });
 myDiagram.model = model;
-var levelColors = ["#00529C/#00529C", "#E72331/#E72331", "#8C0095/#A700AE", "#D24726/#DC572E",
-    "#D24726/#DC572E", "#D24726/#DC572E", "#D24726/#DC572E", "#D24726/#DC572E"];
+var levelColors = ["#00529C/#00529C", "#E72331/#E72331", "#00529C/#00529C", "#04ACEA/#04ACEA",
+    "#04ACEA/#04ACEA", "#04ACEA/#04ACEA", "#04ACEA/#04ACEA", "#04ACEA/#04ACEA"];
 //            "#008299/#00A0B1", "#D24726/#DC572E", "#008A00/#00A600", "#094AB2/#0A5BC4"];
 // override TreeLayout.commitNodes to also modify the background brush based on the tree depth level
 myDiagram.layout.commitNodes = function () {
@@ -242,52 +230,41 @@ function textStyle() {
     return {font: "9pt  Segoe UI,sans-serif", stroke: "white"};
 }
 
-//        // This converter is used by the Picture.
-//        function findHeadShot(obj) {
-//            var clicked = obj.part;
-//            if (clicked!==null) {
-//                return clicked.data.picture;
-//            }
-////            if (key < 0 || key > 16) return "images/HSnopic.png"; // There are only 16 images on the server
-////            return "images/HS" + key + ".png"
-//            return "cat1.png";
-//        }
-
 // define the Node template
 myDiagram.nodeTemplate =
     $(go.Node, "Auto",
         {click: nodeClick},
-        { // handle dragging a Node onto a Node to (maybe) change the reporting relationship
-            mouseDragEnter: function (e, node, prev) {
-                var diagram = node.diagram;
-                var selnode = diagram.selection.first();
-                if (!mayWorkFor(selnode, node)) return;
-                var shape = node.findObject("SHAPE");
-                if (shape) {
-                    shape._prevFill = shape.fill;  // remember the original brush
-                    shape.fill = "darkred";
-                }
-            },
-            mouseDragLeave: function (e, node, next) {
-                var shape = node.findObject("SHAPE");
-                if (shape && shape._prevFill) {
-                    shape.fill = shape._prevFill;  // restore the original brush
-                }
-            },
-            mouseDrop: function (e, node) {
-                var diagram = node.diagram;
-                var selnode = diagram.selection.first();  // assume just one Node in selection
-                if (mayWorkFor(selnode, node)) {
-                    // find any existing link into the selected node
-                    var link = selnode.findTreeParentLink();
-                    if (link !== null) {  // reconnect any existing link
-                        link.fromNode = node;
-                    } else {  // else create a new link
-                        diagram.toolManager.linkingTool.insertLink(node, node.port, selnode, selnode.port);
-                    }
-                }
-            }
-        },
+        // { // handle dragging a Node onto a Node to (maybe) change the reporting relationship
+        //     mouseDragEnter: function (e, node, prev) {
+        //         var diagram = node.diagram;
+        //         var selnode = diagram.selection.first();
+        //         if (!mayWorkFor(selnode, node)) return;
+        //         var shape = node.findObject("SHAPE");
+        //         if (shape) {
+        //             shape._prevFill = shape.fill;  // remember the original brush
+        //             shape.fill = "darkred";
+        //         }
+        //     },
+        //     mouseDragLeave: function (e, node, next) {
+        //         var shape = node.findObject("SHAPE");
+        //         if (shape && shape._prevFill) {
+        //             shape.fill = shape._prevFill;  // restore the original brush
+        //         }
+        //     },
+        //     mouseDrop: function (e, node) {
+        //         var diagram = node.diagram;
+        //         var selnode = diagram.selection.first();  // assume just one Node in selection
+        //         if (mayWorkFor(selnode, node)) {
+        //             // find any existing link into the selected node
+        //             var link = selnode.findTreeParentLink();
+        //             if (link !== null) {  // reconnect any existing link
+        //                 link.fromNode = node;
+        //             } else {  // else create a new link
+        //                 diagram.toolManager.linkingTool.insertLink(node, node.port, selnode, selnode.port);
+        //             }
+        //         }
+        //     }
+        // },
         // for sorting, have the Node.text be the data.name
         new go.Binding("text", "name"),
         new go.Binding("layerName", "isSelected", function (sel) {
@@ -301,8 +278,8 @@ myDiagram.nodeTemplate =
                 portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer"
             }
 
-            //new go.Binding("opacity", "visible", function(t) { return t ? 1 : 0; })
-            // new go.Binding("visible", "visible", function(t) { return t ? true : false; })
+            // ,new go.Binding("opacity", "visible", function(t) { return t ? 1 : 0; })
+            ,new go.Binding("visible", "visible", function(t) { return t ? true : false; })
         ),
         $(go.Panel, "Horizontal",
             $(go.Picture,
@@ -370,15 +347,3 @@ myDiagram.linkTemplate =
 // read in the JSON-format data from the "mySavedModel" element
 //        load();
 // support editing the properties of the selected person in HTML
-if (window.Inspector) myInspector = new Inspector('myInspector', myDiagram,
-    {
-        properties: {
-            'key': {readOnly: true},
-            'comments': {}
-        }
-    });
-// Show the diagram's model in JSON format
-//    function save() {
-//        document.getElementById("mySavedModel").value = myDiagram.model.toJson();
-//        myDiagram.isModified = false;
-//    }

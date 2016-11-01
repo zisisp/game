@@ -147,19 +147,6 @@
             return key.toString();
         }
 
-        // when a node is double-clicked, add a child to it
-//        function nodeDoubleClick(e, obj) {
-//            var clicked = obj.part;
-//            if (clicked !== null) {
-//                var thisemp = clicked.data;
-//                myDiagram.startTransaction("add employee");
-//                var nextkey = getNextKey();
-//                var newemp = { key: nextkey, name: "(new person)", title: "", parent: thisemp.key };
-//                myDiagram.model.addNodeData(newemp);
-//                myDiagram.commitTransaction("add employee");
-//            }
-//        }
-
         //this function reads the url param and redirects to the url link of the object
         function nodeClick(e, obj) {
             var clicked = obj.part;
@@ -181,17 +168,6 @@
         function textStyle() {
             return {font: "9pt  Segoe UI,sans-serif", stroke: "white"};
         }
-
-//        // This converter is used by the Picture.
-//        function findHeadShot(obj) {
-//            var clicked = obj.part;
-//            if (clicked!==null) {
-//                return clicked.data.picture;
-//            }
-////            if (key < 0 || key > 16) return "images/HSnopic.png"; // There are only 16 images on the server
-////            return "images/HS" + key + ".png"
-//            return "cat1.png";
-//        }
 
         // define the Node template
         myDiagram.nodeTemplate =
