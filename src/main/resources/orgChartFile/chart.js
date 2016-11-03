@@ -9,15 +9,15 @@ model.nodeDataArray =
             name: "Παϊκόπουλος Γιώργος",
             title: "Διευθυντής Γραφείου",
             parent: "1",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/PaikopoulosThumb.jpg",
             url: "www.paikopoulos.gr/istoria",
             key: "1",
             name: "Παϊκόπουλος Γιώργος",
-            title: "Συντονιστής Επιθεωρητής Πωλήσεων",
-            visible:true
+            title: "Direct",
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/ntaraklitsi-1-260x260.jpg",
@@ -26,7 +26,7 @@ model.nodeDataArray =
             name: "Νταρακλήτση Ελένη",
             title: "Αναπληρώτρια Διευθύντρια",
             parent: "19",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/georgopoulos-260x260.jpg",
@@ -35,7 +35,7 @@ model.nodeDataArray =
             name: "Γεωργόπουλος Δημήτρης",
             title: "Διευθυντής Ομάδας",
             parent: "2",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/10/tzinhs-1.jpg",
@@ -44,7 +44,7 @@ model.nodeDataArray =
             name: "Τζίνης Νικόλαος",
             title: "Διευθυντής Ομάδας",
             parent: "3",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/09/Ζάχαρης-Ανδρέας1-260x260.jpg",
@@ -53,7 +53,7 @@ model.nodeDataArray =
             name: "Ζάχαρης Ανδρέας",
             title: "Διευθυντής Ομάδας",
             parent: "4",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/gnet-4-260x260.jpg",
@@ -62,7 +62,7 @@ model.nodeDataArray =
             name: "Βαρελά Ελένη",
             title: "Διευθύντρια Ομάδας",
             parent: "5",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/1-1-260x260.jpg",
@@ -71,16 +71,16 @@ model.nodeDataArray =
             name: "Καλαμπαλής Μιχάλης",
             title: "Διευθυντής Ομάδας",
             parent: "18",
-            visible:true
+            visible: true
         }, {
-            pic: "",
-            url: "http://www.paikopoulos.gr",
-            key: "18",
-            name: "",
-            title: "",
-            parent: "19",
-            visible:null
-        },
+        pic: "",
+        url: "http://www.paikopoulos.gr",
+        key: "18",
+        name: "",
+        title: "",
+        parent: "19",
+        visible: null
+    },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/petroxeilos.jpg",
             url: "www.paikopoulos.gr/synergates/petrochilos-emmanouil",
@@ -88,7 +88,7 @@ model.nodeDataArray =
             name: "Πετρόχειλος Μανώλης",
             title: "Διευθυντής Ομάδας",
             parent: "9",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/papadopoulos-260x260.jpg",
@@ -97,7 +97,7 @@ model.nodeDataArray =
             name: "Παπαδόπουλος Νίκος",
             title: "Διευθυντής Ομάδας",
             parent: "10",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2015/10/20151221_183352-260x260.jpg",
@@ -106,7 +106,7 @@ model.nodeDataArray =
             name: "Κουτζαμάνης Γεώργιος",
             title: "Διευθυντής Γραφείου",
             parent: "1",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/moumtzis-260x260.jpg",
@@ -115,7 +115,7 @@ model.nodeDataArray =
             name: "Μουμτζής Στέλιος",
             title: "Αναπληρωτής Διευθυντής",
             parent: "12",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/10/Βαρδαξόγλου-Αντώνης.jpg",
@@ -124,7 +124,7 @@ model.nodeDataArray =
             name: "Βαρδαξόγλου Αντώνης",
             title: "Διευθυντής Ομάδας",
             parent: "13",
-            visible:true
+            visible: true
         },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2015/10/photo-1-260x260.jpg",
@@ -133,7 +133,7 @@ model.nodeDataArray =
             name: "Χαλκοδαίμων Παναγιώτης",
             title: "Διευθυντής Γραφείου",
             parent: "1",
-            visible:true
+            visible: true
         },
         {
             pic: "",
@@ -142,7 +142,7 @@ model.nodeDataArray =
             name: "",
             title: "",
             parent: "15",
-            visible:null
+            visible: null
         }, {
         pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/04/gnet-2-260x260.jpg",
         url: "www.paikopoulos.gr/synergates/lardis-iordanis/",
@@ -150,7 +150,7 @@ model.nodeDataArray =
         name: "Λαρδής Ιορδάνης",
         title: "Διευθυντής Ομάδας",
         parent: "20",
-        visible:true
+        visible: true
     },
         {
             pic: "http://www.paikopoulos.gr/wp-content/uploads/2016/10/lamprou_lefteris.jpg",
@@ -159,11 +159,11 @@ model.nodeDataArray =
             name: "Λάμπρου Λευτέρης",
             title: "Διευθυντής Ομάδας",
             parent: "16",
-            visible:true
+            visible: true
         }
     ];
 
-    myDiagram =
+myDiagram =
     $(go.Diagram, "paikopoulosDiv", // must be the ID or reference to div
         {
             initialContentAlignment: go.Spot.Center,
@@ -234,54 +234,28 @@ function textStyle() {
 myDiagram.nodeTemplate =
     $(go.Node, "Auto",
         {click: nodeClick},
-        // { // handle dragging a Node onto a Node to (maybe) change the reporting relationship
-        //     mouseDragEnter: function (e, node, prev) {
-        //         var diagram = node.diagram;
-        //         var selnode = diagram.selection.first();
-        //         if (!mayWorkFor(selnode, node)) return;
-        //         var shape = node.findObject("SHAPE");
-        //         if (shape) {
-        //             shape._prevFill = shape.fill;  // remember the original brush
-        //             shape.fill = "darkred";
-        //         }
-        //     },
-        //     mouseDragLeave: function (e, node, next) {
-        //         var shape = node.findObject("SHAPE");
-        //         if (shape && shape._prevFill) {
-        //             shape.fill = shape._prevFill;  // restore the original brush
-        //         }
-        //     },
-        //     mouseDrop: function (e, node) {
-        //         var diagram = node.diagram;
-        //         var selnode = diagram.selection.first();  // assume just one Node in selection
-        //         if (mayWorkFor(selnode, node)) {
-        //             // find any existing link into the selected node
-        //             var link = selnode.findTreeParentLink();
-        //             if (link !== null) {  // reconnect any existing link
-        //                 link.fromNode = node;
-        //             } else {  // else create a new link
-        //                 diagram.toolManager.linkingTool.insertLink(node, node.port, selnode, selnode.port);
-        //             }
-        //         }
-        //     }
-        // },
+
         // for sorting, have the Node.text be the data.name
         new go.Binding("text", "name"),
         new go.Binding("layerName", "isSelected", function (sel) {
             return sel ? "Foreground" : "";
         }).ofObject(),
         // define the node's outer shape
-        $(go.Shape, "Rectangle",
-            {
-                name: "SHAPE", fill: "white", stroke: null,
-                // set the port properties:
-                portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer"
-            }
-
-            // ,new go.Binding("opacity", "visible", function(t) { return t ? 1 : 0; })
-            ,new go.Binding("visible", "visible", function(t) { return t ? true : false; })
+        $(go.Panel,
+            // this is the vertical line that the user will see when the SHAPE is transparent:
+            $(go.Shape, "LineV", {
+                strokeWidth: 4, stroke: "#00a4a4",
+                alignment: go.Spot.Center, stretch: go.GraphObject.Fill
+            }),
+            $(go.Shape, "Rectangle",
+                {
+                    name: "SHAPE", fill: "white", stroke: null, stretch: go.GraphObject.Fill,
+                    // set the port properties:
+                    portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer"
+                })
         ),
         $(go.Panel, "Horizontal",
+            {name: "PANEL"},
             $(go.Picture,
                 {
                     name: 'Picture',
