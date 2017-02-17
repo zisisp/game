@@ -1,10 +1,8 @@
 package adventOfCode;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
+import java.net.URISyntaxException;
+import java.util.Collections;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,42 +12,23 @@ import java.util.List;
  * Company: www.xe.gr
  */
 public class Day8 {
-    public static final String test1="\"\"";
-    public static final String test2="\"abc\"";
-    public static final String test3="\"aaa\\\"aaa\"";
-    public static final String test4="\"\\x27\"";
-    public static final String test5="\"zf\\x23\\\\hlj\\\\kkce\\\\d\\\\asy\\\"yyfestwcdxyfj\"\n";
-    public static final String FIXED_DIR = "C:\\Users\\zep\\IdeaProjects\\game\\src\\test\\java\\adventOfCode";
-    public static final String FILENAME = "day8.txt";
+    public static final String test1 = "\"\"";
+    public static final String test2 = "\"abc\"";
+    public static final String test3 = "\"aaa\\\"aaa\"";
+    public static final String test4 = "\"\\x27\"";
+    public static final String test5 = "\"j\\xd8\"";
+    public static final String FILENAME = "day8_1.txt";
+    public static final String TestFile="test_1.txt";
 
-    public static void main(String[] args) throws IOException {
-//        int count1=countCharactersForString(test1);
-//        int count2=countCharactersForString(test2);
-//        int count3=countCharactersForString(test3);
-//        int count4=countCharactersForString(test4);
-//        int count5=countCharactersForString(test5);
-        countCharactersAndPrintResult();
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        Inner in = new Inner();
+        in.countCharactersAndPrintResult(in.getLinesOfText(FILENAME), 1333,FILENAME);
+        in.countCharactersAndPrintResult(Collections.singletonList(test1),2,test1);
+        in.countCharactersAndPrintResult(Collections.singletonList(test2),2,test2);
+        in.countCharactersAndPrintResult(Collections.singletonList(test3),3,test3);
+        in.countCharactersAndPrintResult(Collections.singletonList(test4),5,test4);
+        in.countCharactersAndPrintResult(Collections.singletonList(test5),5,test5);
+        in.countCharactersAndPrintResult(in.getLinesOfText(TestFile),12,TestFile);
     }
 
-    private static void countCharactersAndPrintResult() throws IOException {
-        List<String> lines= getLinesOfText(FILENAME);
-        int result = count(lines);
-        System.out.println("result = " + result);
-    }
-
-    private static int count(List<String> lines) {
-        int total=lines.stream().mapToInt(String::length).sum();
-        int chars=lines.stream()
-                .map(x -> x.replace("\"",""))
-                .map(x -> x.replace("\\\"","A"))
-                .map(x -> x.replace("\\\\","A"))
-                .map(x -> x.replace("\\\\x[a-fA-F0-9]{2}","A"))
-                .mapToInt(String::length)
-                .sum();
-        return total-chars;
-    }
-
-    private static List<String> getLinesOfText(String filename) throws IOException {
-        return Arrays.asList(new String(Files.readAllBytes(Paths.get(FIXED_DIR, filename))).split("\n"));
-    }
 }
