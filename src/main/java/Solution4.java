@@ -12,23 +12,24 @@ public class Solution4 {
         Scanner scan = new Scanner(System.in);
         int i = scan.nextInt();
         double d=scan.nextDouble();
-        String s1=scan.next();
+        scan.nextLine();
         String s2=scan.nextLine();
+        System.out.println("s2 = " + s2);
         NumberFormat nf=new DecimalFormat("#############.#############");
         // Write your code here.
 
-        String string = "String: " + s1 + s2;
-        System.out.println(string);
+        String stringInput = "String: " + s2;
+        System.out.println(stringInput);
         String doubleInput = "Double: " + nf.format(d);
         System.out.println(doubleInput);
         System.out.println("Double: " + d);
-        String stringInput = "Int: " + i;
+        String intInput = "Int: " + i;
         System.out.println(stringInput);
-        validate(doubleInput, stringInput, INTEGER_EXPECTED, DOUBLE_EXPECTED, STRING_EXPECTED);
+        validate(intInput, doubleInput, stringInput, INTEGER_EXPECTED, DOUBLE_EXPECTED, STRING_EXPECTED);
     }
 
-    private static void validate(String doubleInput, String stringInput, String integerExpected, String doubleExpected, String stringExpected) {
-        System.out.println("integer= " + stringInput.equals(integerExpected));
+    private static void validate(String intInput, String doubleInput, String stringInput, String integerExpected, String doubleExpected, String stringExpected) {
+        System.out.println("integer= " + intInput.equals(integerExpected));
         System.out.println("double= " + doubleInput.equals(doubleExpected));
         System.out.println("string= " + stringInput.equals(stringExpected));
     }
