@@ -19,6 +19,7 @@ It must provide all of the methods in the interface and identify the interface i
 An abstract method is a method whose implementation is deferred to a subclass.
 
 5.  If a variable is declared as private, where may the variable be accessed?
+
 A private variable may only be accessed within the class in which it is declared.
 
 6. When is the following statement valid :
@@ -34,16 +35,17 @@ public interface Animal {
 }
 ```
 7.  What must a class do to implement an interface?
+
 It must provide all of the methods in the interface and identify the interface in itsimplements clause.
 
 8.  What is the purpose of the finally clause of a try-catchfinally statement?
+
 The finally clause is used to provide the capability to execute code no matter whether or not an exception is thrown or caught.
 
 https://www.geeksforgeeks.org/minimum-length-subarray-sum-greater-given-value/
 
 
 Excercise:
-
 
 Write a function that returns the first reoccurring character in a string.
 
